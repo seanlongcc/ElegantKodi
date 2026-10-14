@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="skin.elegantfin" version="1.0.0" name="ElegantFin" provider-name="ElegantFin for Kodi contributors">
+  <requires><import addon="xbmc.gui" version="5.17.0" /></requires>
+  <extension point="xbmc.gui.skin" debugging="false">
+    <res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">An ElegantFin-inspired home for your Kodi library.</summary>
+    <description lang="en_GB">A native Kodi 21 skin inspired by lscambo13's ElegantFin for Jellyfin. Rounded artwork, quiet dark surfaces, horizontal media shelves and clear remote focus. Built on Estuary's complete playback, library, PVR and settings foundation. Works with local media and libraries synced by Jellyfin for Kodi.</description>
+    <disclaimer lang="en_GB">Independent adaptation. Not affiliated with ElegantFin, Jellyfin or Team Kodi.</disclaimer>
+    <platform>all</platform><license>GPL-2.0; artwork CC-BY-SA-4.0</license>
+    <assets><icon>resources/elegantfin-icon.png</icon><fanart>resources/elegantfin-fanart.png</fanart></assets>
+  </extension>
+</addon>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+  <defaultcontrol always="true">9000</defaultcontrol><backgroundcolor>background</backgroundcolor>
+  <controls>
+    <include>DefaultBackground</include>
+    <control type="label"><left>100</left><top>65</top><width>1600</width><height>70</height><font>font40_title</font><label>ElegantFin</label></control>
+    <control type="grouplist" id="9000">
+      <left>100</left><top>180</top><width>1720</width><height>700</height><itemgap>12</itemgap>
+      <onup>90</onup><ondown>90</ondown><onback>Back</onback>
+      <control type="radiobutton" id="701"><include>EFSetting</include><label>$LOCALIZE[31906]</label><selected>!Skin.HasSetting(ef_hide_resume)</selected><onclick>Skin.ToggleSetting(ef_hide_resume)</onclick></control>
+      <control type="radiobutton" id="702"><include>EFSetting</include><label>$LOCALIZE[31907]</label><selected>!Skin.HasSetting(ef_hide_movies)</selected><onclick>Skin.ToggleSetting(ef_hide_movies)</onclick></control>
+      <control type="radiobutton" id="703"><include>EFSetting</include><label>$LOCALIZE[31908]</label><selected>!Skin.HasSetting(ef_hide_shows)</selected><onclick>Skin.ToggleSetting(ef_hide_shows)</onclick></control>
+      <control type="radiobutton" id="704"><include>EFSetting</include><label>$LOCALIZE[31909]</label><selected>!Skin.HasSetting(ef_hide_episodes)</selected><onclick>Skin.ToggleSetting(ef_hide_episodes)</onclick></control>
+      <control type="radiobutton" id="705"><include>EFSetting</include><label>$LOCALIZE[31910]</label><selected>!Skin.HasSetting(ef_hide_clock)</selected><onclick>Skin.ToggleSetting(ef_hide_clock)</onclick></control>
+      <control type="radiobutton" id="706"><include>EFSetting</include><label>$LOCALIZE[31002]</label><selected>!Skin.HasSetting(no_fanart)</selected><onclick>Skin.ToggleSetting(no_fanart)</onclick></control>
+      <control type="radiobutton" id="707"><include>EFSetting</include><label>$LOCALIZE[20189]</label><selected>Skin.HasSetting(autoscroll)</selected><onclick>Skin.ToggleSetting(autoscroll)</onclick></control>
+      <control type="radiobutton" id="708"><include>EFSetting</include><label>$LOCALIZE[31095]</label><selected>!Skin.HasSetting(no_slide_animations)</selected><onclick>Skin.ToggleSetting(no_slide_animations)</onclick></control>
+    </control>
+    <control type="button" id="90"><left>100</left><top>950</top><width>230</width><height>62</height><label>$LOCALIZE[186]</label><align>center</align><onclick>Back</onclick><onup>9000</onup><ondown>9000</ondown></control>
+  </controls>
+</window>

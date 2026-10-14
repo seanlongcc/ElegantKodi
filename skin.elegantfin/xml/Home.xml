@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+  <defaultcontrol always="true">9000</defaultcontrol>
+  <backgroundcolor>background</backgroundcolor>
+  <controls>
+    <control type="image"><include>FullScreenDimensions</include><texture>elegantfin/background.png</texture></control>
+    <control type="group">
+      <animation effect="fade" start="0" end="100" time="220">WindowOpen</animation>
+      <control type="image"><left>64</left><top>44</top><width>40</width><height>40</height><texture>elegantfin/mark.png</texture></control>
+      <control type="label"><left>118</left><top>40</top><width>340</width><height>48</height><font>font36_title</font><label>ElegantFin</label><textcolor>ef_focus</textcolor></control>
+      <control type="group">
+        <centerleft>50%</centerleft><top>38</top><width>440</width><height>62</height>
+        <control type="button" id="10">
+          <left>0</left><top>0</top><width>194</width><height>62</height>
+          <label>$LOCALIZE[10000]</label><font>font27</font><align>center</align><textoffsetx>0</textoffsetx>
+          <textcolor>background</textcolor><focusedcolor>background</focusedcolor>
+          <texturefocus border="24" colordiffuse="ef_focus">elegantfin/round.png</texturefocus>
+          <texturenofocus border="24" colordiffuse="white">elegantfin/round.png</texturenofocus>
+          <onleft>12</onleft><onright>11</onright><ondown>9000</ondown><onup>9000</onup><onclick>SetFocus(9000)</onclick>
+        </control>
+        <control type="button" id="11">
+          <left>210</left><top>0</top><width>230</width><height>62</height>
+          <label>$LOCALIZE[10134]</label><font>font27</font><align>center</align><textoffsetx>0</textoffsetx>
+          <texturefocus border="24" colordiffuse="button_focus">elegantfin/round.png</texturefocus>
+          <texturenofocus border="24" colordiffuse="ef_surface">elegantfin/round.png</texturenofocus>
+          <onleft>10</onleft><onright>12</onright><ondown>9000</ondown><onup>9000</onup><onclick>ActivateWindow(favourites)</onclick>
+        </control>
+      </control>
+      <control type="button" id="12">
+        <right>362</right><top>38</top><width>62</width><height>62</height><label>$LOCALIZE[5]</label><include>EFIconButton</include>
+        <texturefocus colordiffuse="button_focus">icons/search.png</texturefocus><texturenofocus>icons/search.png</texturenofocus>
+        <onleft>11</onleft><onright>13</onright><ondown>9000</ondown><onup>9000</onup>
+        <onclick condition="System.AddonIsEnabled(script.globalsearch)">RunScript(script.globalsearch)</onclick>
+        <onclick condition="!System.AddonIsEnabled(script.globalsearch)">ActivateWindow(videos,videodb://movies/titles/,return)</onclick>
+        <onclick condition="!System.AddonIsEnabled(script.globalsearch)">SendClick(videos,8)</onclick>
+      </control>
+      <control type="button" id="13">
+        <right>292</right><top>38</top><width>62</width><height>62</height><label>$LOCALIZE[10004]</label><include>EFIconButton</include>
+        <texturefocus colordiffuse="button_focus">icons/settings.png</texturefocus><texturenofocus>icons/settings.png</texturenofocus>
+        <onleft>12</onleft><onright>14</onright><ondown>9000</ondown><onup>9000</onup><onclick>ActivateWindow(settings)</onclick>
+      </control>
+      <control type="button" id="14">
+        <right>222</right><top>38</top><width>62</width><height>62</height><label>$LOCALIZE[33060]</label><include>EFIconButton</include>
+        <texturefocus colordiffuse="button_focus">icons/power.png</texturefocus><texturenofocus>icons/power.png</texturenofocus>
+        <onleft>13</onleft><onright>10</onright><ondown>9000</ondown><onup>9000</onup><onclick>ActivateWindow(shutdownmenu)</onclick>
+      </control>
+      <control type="label"><right>64</right><top>42</top><width>146</width><height>50</height><font>font27</font><align>right</align><label>$INFO[System.Time]</label><visible>!Skin.HasSetting(ef_hide_clock)</visible></control>
+      <control type="label">
+        <right>220</right><top>106</top><width>260</width><height>34</height><font>font20_title</font><align>right</align><textcolor>grey</textcolor>
+        <label>$INFO[System.CurrentControl]</label><visible>Control.HasFocus(12) | Control.HasFocus(13) | Control.HasFocus(14)</visible>
+      </control>
+    </control>
+    <control type="grouplist" id="2000">
+      <left>62</left><top>174</top><right>62</right><bottom>54</bottom>
+      <orientation>vertical</orientation><itemgap>28</itemgap><scrolltime tween="cubic" easing="out">320</scrolltime>
+      <onup>10</onup><ondown>10</ondown><onleft>10</onleft><onback>10</onback><usecontrolcoords>true</usecontrolcoords>
+      <control type="group" id="2010">
+        <height>256</height>
+        <control type="label"><left>8</left><top>0</top><width>1400</width><height>50</height><font>font32_title</font><label>$LOCALIZE[31900]</label></control>
+        <control type="list" id="9000">
+          <left>0</left><top>60</top><right>0</right><height>196</height><orientation>horizontal</orientation><scrolltime>260</scrolltime>
+          <onup>10</onup><ondown>5100</ondown><onleft>10</onleft><onback>10</onback>
+          <itemlayout width="354" height="196"><include content="EFLibraryTile"><param name="focused" value="false" /></include></itemlayout>
+          <focusedlayout width="354" height="196"><include content="EFLibraryTile"><param name="focused" value="Control.HasFocus(9000)" /></include></focusedlayout>
+          <content>
+            <item><label>$LOCALIZE[342]</label><thumb>DefaultMovies.png</thumb><property name="art">$INFO[Container(5200).ListItem.Art(fanart)]</property><onclick>ActivateWindow(videos,videodb://movies/titles/,return)</onclick></item>
+            <item><label>$LOCALIZE[20343]</label><thumb>DefaultTVShows.png</thumb><property name="art">$INFO[Container(5300).ListItem.Art(fanart)]</property><onclick>ActivateWindow(videos,videodb://tvshows/titles/,return)</onclick></item>
+            <item><label>$LOCALIZE[2]</label><thumb>DefaultMusicAlbums.png</thumb><onclick>ActivateWindow(music,root,return)</onclick></item>
+            <item><label>$LOCALIZE[24001]</label><thumb>DefaultAddon.png</thumb><onclick>ActivateWindow(addonbrowser)</onclick></item>
+            <item><label>$LOCALIZE[744]</label><thumb>DefaultFolder.png</thumb><onclick>ActivateWindow(videos,files,return)</onclick></item>
+            <item><label>$LOCALIZE[1]</label><thumb>DefaultPicture.png</thumb><onclick>ActivateWindow(pictures)</onclick></item>
+            <item><label>$LOCALIZE[19020]</label><thumb>DefaultTVShows.png</thumb><onclick>ActivateWindow(tvguide)</onclick><visible>PVR.HasTVChannels</visible></item>
+            <item><label>$LOCALIZE[19021]</label><thumb>icons/sidemenu/radio.png</thumb><onclick>ActivateWindow(radioguide)</onclick><visible>PVR.HasRadioChannels</visible></item>
+            <item><label>$LOCALIZE[24998]</label><thumb>icons/sidemenu/games.png</thumb><onclick>ActivateWindow(games)</onclick></item>
+          </content>
+        </control>
+      </control>
+      <include content="EFLandscapeShelf"><param name="id" value="5100" /><param name="up" value="9000" /><param name="down" value="5150" /><param name="heading" value="$LOCALIZE[31901]" /><param name="path" value="special://skin/playlists/inprogress_movies.xsp" /><param name="visible" value="!Skin.HasSetting(ef_hide_resume)" /></include>
+      <include content="EFLandscapeShelf"><param name="id" value="5150" /><param name="up" value="5100" /><param name="down" value="5200" /><param name="heading" value="$LOCALIZE[31902]" /><param name="path" value="special://skin/playlists/ef_resume_episodes.xsp" /><param name="visible" value="!Skin.HasSetting(ef_hide_resume)" /></include>
+      <include content="EFPosterShelf"><param name="id" value="5200" /><param name="up" value="5150" /><param name="down" value="5300" /><param name="heading" value="$LOCALIZE[31903]" /><param name="path" value="videodb://recentlyaddedmovies/" /><param name="visible" value="!Skin.HasSetting(ef_hide_movies)" /></include>
+      <include content="EFPosterShelf"><param name="id" value="5300" /><param name="up" value="5200" /><param name="down" value="5400" /><param name="heading" value="$LOCALIZE[31904]" /><param name="path" value="special://skin/playlists/ef_recent_tvshows.xsp" /><param name="visible" value="!Skin.HasSetting(ef_hide_shows)" /></include>
+      <include content="EFLandscapeShelf"><param name="id" value="5400" /><param name="up" value="5300" /><param name="down" value="5500" /><param name="heading" value="$LOCALIZE[20387]" /><param name="path" value="videodb://recentlyaddedepisodes/" /><param name="visible" value="!Skin.HasSetting(ef_hide_episodes)" /></include>
+      <control type="group">
+        <height>200</height><visible>!Library.HasContent(movies) + !Library.HasContent(tvshows)</visible>
+        <control type="label"><left>8</left><top>34</top><width>1650</width><height>50</height><font>font32_title</font><label>$LOCALIZE[31905]</label></control>
+        <control type="button" id="5500">
+          <left>8</left><top>105</top><width>300</width><height>62</height><label>$LOCALIZE[31110]</label><align>center</align><onclick>ActivateWindow(videos,files,return)</onclick>
+          <texturefocus border="24" colordiffuse="button_focus">elegantfin/round.png</texturefocus><texturenofocus border="24" colordiffuse="ef_surface">elegantfin/round.png</texturenofocus>
+          <onup>5400</onup><ondown>10</ondown><onleft>10</onleft><onback>10</onback>
+        </control>
+      </control>
+    </control>
+    <control type="label"><left>70</left><bottom>15</bottom><width>900</width><height>28</height><font>font20_title</font><textcolor>grey</textcolor><label>$INFO[Player.Title,$LOCALIZE[31000]: ]</label><visible>Player.HasMedia</visible></control>
+  </controls>
+</window>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+  <defaultcontrol always="true">8</defaultcontrol>
+  <onload>SetProperty(infobackground,$ESCINFO[ListItem.Art(fanart)],home)</onload>
+  <onunload>ClearProperty(infobackground,home)</onunload>
+  <controls>
+    <control type="image"><include>FullScreenDimensions</include><texture>elegantfin/background.png</texture></control>
+    <control type="image"><include>FullScreenDimensions</include><aspectratio>scale</aspectratio><texture background="true">$INFO[ListItem.Art(fanart)]</texture><visible>!Skin.HasSetting(no_fanart)</visible></control>
+    <control type="image"><include>FullScreenDimensions</include><texture>elegantfin/detail-shade.png</texture></control>
+    <control type="grouplist" id="8000">
+      <left>0</left><top>100</top><right>0</right><bottom>30</bottom><orientation>vertical</orientation><itemgap>20</itemgap><scrolltime>300</scrolltime><onback>Close</onback><usecontrolcoords>true</usecontrolcoords>
+      <control type="group" id="8100">
+        <height>850</height>
+        <control type="image"><centerleft>50%</centerleft><top>265</top><width>650</width><height>220</height><aspectratio>keep</aspectratio><texture background="true">$INFO[ListItem.Art(clearlogo)]</texture><visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible></control>
+        <control type="textbox"><centerleft>50%</centerleft><top>320</top><width>1400</width><height>145</height><font>font52_title</font><textcolor>ef_focus</textcolor><align>center</align><label>$INFO[ListItem.Title]</label><visible>String.IsEmpty(ListItem.Art(clearlogo))</visible></control>
+        <control type="label"><centerleft>50%</centerleft><top>488</top><width>1500</width><height>40</height><font>font27</font><align>center</align><label>$INFO[ListItem.Year]   $INFO[ListItem.Duration]   $INFO[ListItem.MPAA]   [COLOR blue]$INFO[ListItem.Rating,*,][/COLOR]</label></control>
+        <control type="grouplist" id="5000">
+          <centerleft>50%</centerleft><top>556</top><width>1740</width><height>68</height><orientation>horizontal</orientation><align>center</align><itemgap>14</itemgap><onup>90</onup><ondown>138</ondown><onleft>5000</onleft><onright>5000</onright>
+          <control type="button" id="8">
+            <width>224</width><height>64</height><font>font27</font><align>center</align><textoffsetx>0</textoffsetx><label>$VAR[VideoInfoPlayButtonLabelVar]</label>
+            <textcolor>background</textcolor><focusedcolor>background</focusedcolor><texturefocus border="24" colordiffuse="ef_focus">elegantfin/round.png</texturefocus><texturenofocus border="24" colordiffuse="white">elegantfin/round.png</texturenofocus>
+            <onup>90</onup><ondown>138</ondown>
+          </control>
+          <control type="button" id="11"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/trailer.png" /></include><label>$LOCALIZE[20410]</label><visible>!String.IsEmpty(ListItem.Trailer)</visible></control>
+          <control type="button" id="7"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/rating.png" /></include><label>$LOCALIZE[31033]</label><visible>Control.IsEnabled(7)</visible></control>
+          <control type="button" id="14"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/versions.png" /></include><label>$LOCALIZE[40000]</label><visible>String.IsEqual(ListItem.DBType,movie)</visible></control>
+          <control type="button" id="15"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/extras.png" /></include><label>$LOCALIZE[40211]</label><visible>String.IsEqual(ListItem.DBType,movie)</visible></control>
+          <control type="button" id="10"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/choose_image.png" /></include><label>$LOCALIZE[13511]</label><visible>Control.IsEnabled(10)</visible></control>
+          <control type="button" id="6"><include content="EFInfoAction"><param name="icon" value="icons/infodialogs/update.png" /></include><label>$LOCALIZE[184]</label><visible>Control.IsEnabled(6)</visible></control>
+        </control>
+        <control type="label"><centerleft>50%</centerleft><top>628</top><width>1000</width><height>30</height><font>font20_title</font><align>center</align><label>$INFO[System.CurrentControl]</label><visible>ControlGroup(5000).HasFocus + !Control.HasFocus(8)</visible></control>
+        <control type="label"><left>80</left><top>652</top><width>1760</width><height>46</height><font>font27</font><label>$INFO[ListItem.Tagline]</label><textcolor>white</textcolor><visible>!String.IsEqual(ListItem.DBType,episode)</visible></control>
+        <control type="label" id="400"><left>80</left><top>652</top><width>1760</width><height>46</height><font>font27</font><label>$INFO[ListItem.TVShowTitle,,: ]$VAR[VideoInfoSubLabelVar]</label><textcolor>white</textcolor><scroll>true</scroll><visible>String.IsEqual(ListItem.DBType,episode)</visible></control>
+        <control type="button" id="138">
+          <left>62</left><top>701</top><width>1796</width><height>146</height><label></label>
+          <texturefocus border="20" colordiffuse="ef_border">elegantfin/outline.png</texturefocus><texturenofocus />
+          <onup>5000</onup><ondown>50</ondown><onleft>5000</onleft><onright>50</onright>
+          <onclick>SetProperty(TextViewer_Header,$ESCINFO[ListItem.Title],home)</onclick>
+          <onclick>SetProperty(TextViewer_Text,$ESCINFO[ListItem.Plot][CR][CR]$LOCALIZE[20339]: $ESCINFO[ListItem.Director][CR]$LOCALIZE[515]: $ESCINFO[ListItem.Genre][CR]$LOCALIZE[572]: $ESCINFO[ListItem.Studio],home)</onclick>
+          <onclick>ActivateWindow(1102)</onclick>
+        </control>
+        <control type="textbox"><left>80</left><top>710</top><width>1760</width><height>128</height><font>font27</font><label>$INFO[ListItem.Plot]</label><autoscroll delay="7000" time="4000" repeat="8000">Skin.HasSetting(autoscroll)</autoscroll></control>
+      </control>
+      <control type="group" id="8200">
+        <height>365</height><visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
+        <control type="label"><left>80</left><top>0</top><width>1600</width><height>48</height><font>font32_title</font><label>$LOCALIZE[206]</label></control>
+        <control type="list" id="50">
+          <left>70</left><top>60</top><right>70</right><height>302</height><orientation>horizontal</orientation><scrolltime>250</scrolltime><onup>138</onup><ondown>5000</ondown><onleft>138</onleft>
+          <itemlayout width="228" height="300"><include content="EFCastCard"><param name="focused" value="false" /></include></itemlayout>
+          <focusedlayout width="228" height="300"><include content="EFCastCard"><param name="focused" value="Control.HasFocus(50)" /></include></focusedlayout>
+        </control>
+      </control>
+    </control>
+    <control type="button" id="90"><left>65</left><top>34</top><width>52</width><height>52</height><label>$LOCALIZE[31911]</label><include>EFIconButton</include><texturefocus colordiffuse="button_focus">icons/back.png</texturefocus><texturenofocus>icons/back.png</texturenofocus><onclick>Close</onclick><onup>8</onup><ondown>8</ondown><onright>8</onright></control>
+    <control type="label"><right>70</right><top>38</top><width>160</width><height>48</height><font>font27</font><label>$INFO[System.Time]</label><align>right</align><visible>!Skin.HasSetting(ef_hide_clock)</visible></control>
+  </controls>
+</window>

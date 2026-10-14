@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+  <include name="EFInfoAction">
+    <definition>
+      <width>60</width><height>60</height><font></font><textoffsetx>0</textoffsetx>
+      <onup>90</onup><ondown>138</ondown>
+      <texturefocus colordiffuse="button_focus">$PARAM[icon]</texturefocus>
+      <texturenofocus colordiffuse="white">$PARAM[icon]</texturenofocus>
+    </definition>
+  </include>
+  <include name="EFCastCard">
+    <param name="focused">false</param>
+    <definition>
+      <control type="image"><left>8</left><top>8</top><width>198</width><height>220</height><aspectratio scalediffuse="false">scale</aspectratio><texture diffuse="elegantfin/mask-cast.png" fallback="DefaultActor.png" background="true">$INFO[ListItem.Thumb]</texture></control>
+      <control type="image"><left>5</left><top>5</top><width>204</width><height>226</height><texture border="22" colordiffuse="ef_focus">elegantfin/focus.png</texture><visible>$PARAM[focused]</visible></control>
+      <control type="label"><left>8</left><top>236</top><width>198</width><height>32</height><font>font12</font><align>center</align><label>$INFO[ListItem.Label]</label><scroll>$PARAM[focused]</scroll></control>
+      <control type="label"><left>8</left><top>270</top><width>198</width><height>28</height><font>font20_title</font><align>center</align><label>$INFO[ListItem.Label2]</label><textcolor>grey</textcolor></control>
+    </definition>
+  </include>
+  <include name="EFSetting">
+    <width>1720</width><height>70</height><textoffsetx>24</textoffsetx><font>font27</font>
+    <texturefocus border="20" colordiffuse="button_focus">elegantfin/round.png</texturefocus>
+    <texturenofocus border="20" colordiffuse="ef_surface">elegantfin/round.png</texturenofocus>
+  </include>
+  <include name="EFIconButton"><font></font><textoffsetx>0</textoffsetx><textcolor>00000000</textcolor><focusedcolor>00000000</focusedcolor></include>
+  <include name="EFLibraryTile">
+    <param name="focused">false</param>
+    <definition>
+      <control type="image"><left>8</left><top>6</top><width>330</width><height>180</height><texture border="20" colordiffuse="ef_surface">elegantfin/round.png</texture></control>
+      <control type="image"><left>8</left><top>6</top><width>330</width><height>180</height><aspectratio scalediffuse="false">scale</aspectratio><texture diffuse="elegantfin/mask-wide.png" colordiffuse="55FFFFFF" background="true">$INFO[ListItem.Property(art)]</texture></control>
+      <control type="image"><left>143</left><top>22</top><width>60</width><height>60</height><aspectratio>keep</aspectratio><texture colordiffuse="white">$INFO[ListItem.Icon]</texture></control>
+      <control type="label"><left>25</left><top>111</top><width>296</width><height>46</height><font>font27</font><align>center</align><label>$INFO[ListItem.Label]</label><textcolor>ef_focus</textcolor></control>
+      <control type="image"><left>8</left><top>6</top><width>330</width><height>180</height><texture border="20" colordiffuse="ef_border">elegantfin/outline.png</texture></control>
+      <control type="image"><left>5</left><top>3</top><width>336</width><height>186</height><texture border="22" colordiffuse="ef_focus">elegantfin/focus.png</texture><visible>$PARAM[focused]</visible></control>
+    </definition>
+  </include>
+  <variable name="EFLandscapeArt">
+    <value condition="!String.IsEmpty(ListItem.Art(landscape))">$INFO[ListItem.Art(landscape)]</value>
+    <value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.Art(thumb)]</value>
+    <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+    <value>$INFO[ListItem.Thumb]</value>
+  </variable>
+  <variable name="EFSubtitle">
+    <value condition="String.IsEqual(ListItem.DBType,episode)">$INFO[ListItem.TVShowTitle]  $INFO[ListItem.Season,S,]$INFO[ListItem.Episode, E,]</value>
+    <value condition="String.IsEqual(ListItem.DBType,tvshow)">$INFO[ListItem.Year]  $INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+    <value>$INFO[ListItem.Year]  $INFO[ListItem.Duration]</value>
+  </variable>
+  <include name="EFPosterCard">
+    <param name="focused">false</param>
+    <definition>
+      <control type="image"><left>8</left><top>8</top><width>228</width><height>342</height><texture border="20" colordiffuse="ef_surface">elegantfin/round.png</texture></control>
+      <control type="image"><left>8</left><top>8</top><width>228</width><height>342</height><aspectratio scalediffuse="false">scale</aspectratio><texture diffuse="elegantfin/mask-poster.png" fallback="DefaultVideo.png" background="true">$INFO[ListItem.Art(poster)]</texture></control>
+      <control type="image"><left>8</left><top>8</top><width>228</width><height>342</height><texture border="20" colordiffuse="ef_border">elegantfin/outline.png</texture></control>
+      <control type="image"><left>5</left><top>5</top><width>234</width><height>348</height><texture border="22" colordiffuse="ef_focus">elegantfin/focus.png</texture><visible>$PARAM[focused]</visible></control>
+      <control type="label"><left>8</left><top>359</top><width>228</width><height>38</height><font>font12</font><align>center</align><label>$INFO[ListItem.Label]</label><scroll>$PARAM[focused]</scroll></control>
+      <control type="label"><left>8</left><top>395</top><width>228</width><height>28</height><font>font20_title</font><align>center</align><label>$INFO[ListItem.Year]</label><textcolor>grey</textcolor></control>
+      <control type="image"><left>197</left><top>16</top><width>29</width><height>29</height><texture>elegantfin/watched.png</texture><visible>Integer.IsGreater(ListItem.PlayCount,0)</visible></control>
+    </definition>
+  </include>
+  <include name="EFLandscapeCard">
+    <param name="focused">false</param>
+    <definition>
+      <control type="image"><left>8</left><top>8</top><width>402</width><height>226</height><texture border="20" colordiffuse="ef_surface">elegantfin/round.png</texture></control>
+      <control type="image"><left>8</left><top>8</top><width>402</width><height>226</height><aspectratio scalediffuse="false">scale</aspectratio><texture diffuse="elegantfin/mask-landscape.png" fallback="DefaultVideo.png" background="true">$VAR[EFLandscapeArt]</texture></control>
+      <control type="image"><left>8</left><top>8</top><width>402</width><height>226</height><texture border="20" colordiffuse="ef_border">elegantfin/outline.png</texture></control>
+      <control type="image"><left>5</left><top>5</top><width>408</width><height>232</height><texture border="22" colordiffuse="ef_focus">elegantfin/focus.png</texture><visible>$PARAM[focused]</visible></control>
+      <control type="progress"><left>35</left><top>208</top><width>348</width><height>7</height><info>ListItem.PercentPlayed</info><visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible><texturebg border="3" colordiffuse="99000000">elegantfin/round.png</texturebg><midtexture border="3" colordiffuse="ef_focus">elegantfin/round.png</midtexture></control>
+      <control type="label"><left>8</left><top>244</top><width>402</width><height>38</height><font>font27</font><align>center</align><label>$INFO[ListItem.Label]</label><scroll>$PARAM[focused]</scroll></control>
+      <control type="label"><left>8</left><top>282</top><width>402</width><height>32</height><font>font10</font><align>center</align><textcolor>grey</textcolor><label>$VAR[EFSubtitle]</label><scroll>$PARAM[focused]</scroll></control>
+    </definition>
+  </include>
+  <include name="EFPosterShelf">
+    <param name="visible">true</param>
+    <definition>
+      <control type="group" id="$PARAM[id]1">
+        <height>492</height><visible>[Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating] + [$PARAM[visible]]</visible>
+        <control type="label"><left>8</left><top>0</top><width>1600</width><height>50</height><font>font32_title</font><label>$PARAM[heading]</label></control>
+        <control type="list" id="$PARAM[id]">
+          <left>0</left><top>60</top><right>0</right><height>432</height><orientation>horizontal</orientation><scrolltime>260</scrolltime><preloaditems>2</preloaditems><onleft>10</onleft><onback>10</onback><onup>$PARAM[up]</onup><ondown>$PARAM[down]</ondown>
+          <itemlayout width="252" height="432"><include content="EFPosterCard"><param name="focused" value="false" /></include></itemlayout>
+          <focusedlayout width="252" height="432"><include content="EFPosterCard"><param name="focused" value="Control.HasFocus($PARAM[id])" /></include></focusedlayout>
+          <content target="videos" limit="24" browse="never">$PARAM[path]</content>
+        </control>
+      </control>
+    </definition>
+  </include>
+  <include name="EFLandscapeShelf">
+    <param name="visible">true</param>
+    <definition>
+      <control type="group" id="$PARAM[id]1">
+        <height>388</height><visible>[Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating] + [$PARAM[visible]]</visible>
+        <control type="label"><left>8</left><top>0</top><width>1600</width><height>50</height><font>font32_title</font><label>$PARAM[heading]</label></control>
+        <control type="list" id="$PARAM[id]">
+          <left>0</left><top>60</top><right>0</right><height>328</height><orientation>horizontal</orientation><scrolltime>260</scrolltime><preloaditems>2</preloaditems><onleft>10</onleft><onback>10</onback><onup>$PARAM[up]</onup><ondown>$PARAM[down]</ondown>
+          <itemlayout width="426" height="328"><include content="EFLandscapeCard"><param name="focused" value="false" /></include></itemlayout>
+          <focusedlayout width="426" height="328"><include content="EFLandscapeCard"><param name="focused" value="Control.HasFocus($PARAM[id])" /></include></focusedlayout>
+          <content target="videos" limit="24" browse="never">$PARAM[path]</content>
+        </control>
+      </control>
+    </definition>
+  </include>
+</includes>
